@@ -1,10 +1,13 @@
-require_relative '../spec/factories'
-10.times {
-  user = FactoryGirl.create :user
-  rand(6).times {
-    post = FactoryGirl.create :post, :user => user
-    rand(10).times {
-      FactoryGirl.create :comment, :user => user, :post => post
-    }
-  }
-}
+require_relative 'arr'
+
+SEBA.each do |transaction|
+  Purchase.create(
+      serial: transaction[:serial],
+      date: transaction[:date],
+      ammount: transaction[:ammount],
+      vendor: transaction[:vendor],
+      transaction_type: transaction[:transaction_type],
+      location: transaction[:location],
+      cardholder: transaction[:cardholder]
+    )
+end

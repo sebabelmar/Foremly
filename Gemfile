@@ -18,6 +18,9 @@ gem 'rake'
 
 gem 'shotgun'
 
+gem "ofx"
+gem "chronic"
+
 group :test do
   gem 'shoulda-matchers'
   gem 'rack-test'
