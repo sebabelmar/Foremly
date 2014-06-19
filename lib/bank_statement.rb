@@ -1,11 +1,9 @@
 require "ofx"
 require "chronic"
-require 'json'
 
-FILE = "Checking4.ofx"
+FILE = "lib/Checking4.ofx"
 
-
-class Bank_Statement
+class BankStatement
 
   attr_reader :transactions, :cc_purchase
   def initialize
@@ -13,16 +11,10 @@ class Bank_Statement
     @cc_purchase = []
   end
 
-  def return_valid_cc_purchases
-    clean
-    memo_corrector
-    cc_purchase
-  end
-
   def print_cc_purchases
     clean
     memo_corrector
-    cc_purchases
+    cc_purchases_to_print
   end
 
   def cc_purchases_hash
@@ -33,7 +25,7 @@ class Bank_Statement
         year = transaction.posted_at.year.to_s
         memo = transaction.memo.split(" ")
         date = (Chronic.parse(transaction.memo.split(" ")[3]+"/#{year}")).to_s
-        ammount = (transaction.amount_in_pennies.to_f / 100.00 * (-1.00))
+        ammount = (transaction.amount_in_pennies.to_f / 100.00 * (-1.00)).to_s
         serial = "#{date.to_s.delete(' ')[0..9]}#{ammount.to_s}"
 
         miracle << {
@@ -96,7 +88,7 @@ class Bank_Statement
     end
   end
 
-  def cc_purchases
+  def cc_purchases_to_print
     @cc_purchase.each do |transaction|
         puts "*"*30
         p transaction.type
@@ -111,7 +103,3 @@ class Bank_Statement
     end
   end
 end
-
-
-# p transaction_hash = Bank_Statement.new.cc_purchases_hash
-p Bank_Statement.new.card_holders

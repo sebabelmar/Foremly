@@ -1,5 +1,7 @@
 <div class="container">
-  <h1>Welcome to Sinatra!</h1>
-  <p><%= @view %></p>
+  <h1>Welcome to Foremly API</h1>
 
+  <% @check.each do |transaction| %>
+  <p>><%= transaction.vendor %></p>
+  <% end %>
 </div>

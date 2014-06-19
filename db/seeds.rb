@@ -1,4 +1,6 @@
-require_relative 'arr'
+require_relative '../lib/bank_statement'
+
+SEBA = BankStatement.new.cc_purchases_hash
 
 SEBA.each do |transaction|
   Purchase.create(

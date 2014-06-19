@@ -1,5 +1,12 @@
 <div class="container">
-  <h1>Welcome to Sinatra!</h1>
-  <%= @transactions_per_ch%>
+  <h1>Foremly API cardholder</h1>
+
+  <% @transactions_per_ch.each do |transaction| %>
+    <p><%= transaction.date %></p>
+    <p><%= transaction.ammount %></p>
+    <p><%= transaction.vendor %></p>
+    <p><%= transaction.cardholder %></p>
+    <p>############################################</p>
+  <% end %>
 
 </div>

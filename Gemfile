@@ -21,6 +21,8 @@ gem 'shotgun'
 gem "ofx"
 gem "chronic"
 
+gem 'pry'
+
 group :test do
   gem 'shoulda-matchers'
   gem 'rack-test'
