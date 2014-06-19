@@ -1,7 +1,7 @@
 require "ofx"
 require "chronic"
 
-FILE = "lib/Checking4.ofx"
+FILE = "data/Checking4.ofx"
 
 class BankStatement
 
